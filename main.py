@@ -2,11 +2,13 @@ import os
 from datetime import date
 from functools import wraps
 
-from flask import Flask, abort, flash, redirect, render_template, request, url_for
+from flask import (Flask, abort, flash, redirect, render_template, request,
+                   url_for)
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
-from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user
+from flask_login import (LoginManager, UserMixin, current_user, login_user,
+                         logout_user)
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -59,7 +61,6 @@ gravatar = Gravatar(
 )
 
 # CONNECT TO DB
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///posts.db"
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URI", "sqlite:///posts.db")
 db = SQLAlchemy()
 db.init_app(app)
